@@ -29,7 +29,6 @@ class Array
 			T	*newArray = new T[src._size];
 			for (unsigned int i = 0; i < src._size; ++i)
 				newArray[i] = src[i];
-			delete[] this->_array;
 			this->_array = newArray;
 			this->_size = src._size;
 			return (*this);
