@@ -6,7 +6,7 @@
 /*   By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:28:07 by schuah            #+#    #+#             */
-/*   Updated: 2022/09/02 14:04:19 by schuah           ###   ########.fr       */
+/*   Updated: 2022/09/03 21:41:12 by schuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Array
 		Array(void) : _array(new T[0]), _size(0) {};
 		Array(unsigned int n) : _array(new T[n]), _size(n) {};
 		Array(const Array &src) { *this = src; };
-		~Array() {delete[] _array; };
+		~Array() {delete [] _array; };
 		Array	&operator=(const Array &src)
 		{
 			T	*newArray = new T[src._size];
