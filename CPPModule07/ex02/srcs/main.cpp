@@ -61,7 +61,7 @@ int main(void)
 		{
 			numbers[i] = rand();
 		}
-		delete [] mirror;
+		delete [] mirror;//
 	}
 	{
 		std::cout << "\n---------- EX02 Default Test ----------\n" << std::endl;
@@ -104,17 +104,12 @@ int main(void)
 			std::cout << "dupStringArray[" << i << "] = " << dupStringArray[i] << std::endl;
 
 		std::cout << "\n--------------- EX02 Copy Assignation Operator Test ---------------" << std::endl;
-		Array<std::string> smallArray(2);
-		Array<std::string> bigArray(10);
+		Array<std::string> smallArray = dupStringArray;
+		Array<std::string> bigArray = dupStringArray;
 
 		std::cout << "SmallArray size: " << smallArray.size() << std::endl;
 		std::cout << "BigArray size: " << bigArray.size() << std::endl;
 		std::cout << "dupStringArray size: " << dupStringArray.size() << std::endl;
-
-		smallArray = dupStringArray;
-		bigArray = dupStringArray;
-		std::cout << "\nSmallArray size: " << smallArray.size() << std::endl;
-		std::cout << "BigArray size: " << bigArray.size() << std::endl;
 
 		std::cout << "\nCopied smallArray:" << std::endl;
 		for (unsigned int i = 0; i < smallArray.size(); i++)
