@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+        */
+/*   By: schuah <schuah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:01:47 by schuah            #+#    #+#             */
-/*   Updated: 2022/09/03 21:39:55 by schuah           ###   ########.fr       */
+/*   Updated: 2023/07/26 16:26:26 by schuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 int main(void)
 {
 	{
-		std::cout << "\n---------- EX02 Main Test ----------\n" << std::endl;
+		std::cout << "\n---------- EX02 Main Test ----------\n"
+							<< std::endl;
 		Array<int> numbers(MAX_VAL);
-		int* mirror = new int[MAX_VAL];
+		int *mirror = new int[MAX_VAL];
 		srand(time(NULL));
 		for (int i = 0; i < MAX_VAL; i++)
 		{
@@ -26,7 +27,7 @@ int main(void)
 			numbers[i] = value;
 			mirror[i] = value;
 		}
-		//SCOPE
+		// SCOPE
 		{
 			Array<int> tmp = numbers;
 			Array<int> test(tmp);
@@ -44,7 +45,7 @@ int main(void)
 		{
 			numbers[-2] = 0;
 		}
-		catch(const std::exception& e)
+		catch (const std::exception &e)
 		{
 			std::cerr << e.what() << '\n';
 		}
@@ -52,7 +53,7 @@ int main(void)
 		{
 			numbers[MAX_VAL] = 0;
 		}
-		catch(const std::exception& e)
+		catch (const std::exception &e)
 		{
 			std::cerr << e.what() << '\n';
 		}
@@ -61,12 +62,13 @@ int main(void)
 		{
 			numbers[i] = rand();
 		}
-		delete [] mirror;//
+		delete[] mirror; //
 	}
 	{
-		std::cout << "\n---------- EX02 Default Test ----------\n" << std::endl;
+		std::cout << "\n---------- EX02 Default Test ----------\n"
+							<< std::endl;
 		Array<int> intArray(10);
-		
+
 		for (unsigned i = 0; i < intArray.size(); i++)
 			intArray[i] = 0;
 		std::cout << "Initialized intArray:" << std::endl;
@@ -103,26 +105,34 @@ int main(void)
 		for (unsigned int i = 0; i < dupStringArray.size(); i++)
 			std::cout << "dupStringArray[" << i << "] = " << dupStringArray[i] << std::endl;
 
-		std::cout << "\n--------------- EX02 Copy Assignation Operator Test ---------------" << std::endl;
-		Array<std::string> smallArray = dupStringArray;
-		Array<std::string> bigArray = dupStringArray;
+		std::cout << "\nOriginal stringArray:" << std::endl;
+		for (unsigned int i = 0; i < stringArray.size(); i++)
+			std::cout << "stringArray[" << i << "] = " << stringArray[i] << std::endl;
 
-		std::cout << "SmallArray size: " << smallArray.size() << std::endl;
-		std::cout << "BigArray size: " << bigArray.size() << std::endl;
+		std::cout << "\n--------------- EX02 Copy Assignation Operator Test ---------------" << std::endl;
+		Array<std::string> copiedArray = dupStringArray;
+
+		std::cout << "copiedArray size: " << copiedArray.size() << std::endl;
 		std::cout << "dupStringArray size: " << dupStringArray.size() << std::endl;
 
-		std::cout << "\nCopied smallArray:" << std::endl;
-		for (unsigned int i = 0; i < smallArray.size(); i++)
-			std::cout << "smallArray[" << i << "] = " << smallArray[i] << std::endl;
+		std::cout << "\nCopied copiedArray:" << std::endl;
+		for (unsigned int i = 0; i < copiedArray.size(); i++)
+			std::cout << "copiedArray[" << i << "] = " << copiedArray[i] << std::endl;
 
-		std::cout << "\nCopied bigArray:" << std::endl;
-		for (unsigned int i = 0; i < bigArray.size(); i++)
-			std::cout << "bigArray[" << i << "] = " << bigArray[i] << std::endl;
+		copiedArray[0] = "Changed!";
+
+		std::cout << "\nChanged copiedArray:" << std::endl;
+		for (unsigned int i = 0; i < copiedArray.size(); i++)
+			std::cout << "copiedArray[" << i << "] = " << copiedArray[i] << std::endl;
+
+		std::cout << "\nOriginal dupStringArray:" << std::endl;
+		for (unsigned int i = 0; i < dupStringArray.size(); i++)
+			std::cout << "dupStringArray[" << i << "] = " << dupStringArray[i] << std::endl;
 
 		std::cout << "\n--------------- EX02 Exception Test ---------------" << std::endl;
 		try
 		{
-			std::cout << bigArray[6] << std::endl;
+			std::cout << copiedArray[6] << std::endl;
 		}
 		catch (const std::exception &e)
 		{
@@ -130,7 +140,7 @@ int main(void)
 		}
 		try
 		{
-			std::cout << smallArray[-1] << std::endl;
+			std::cout << copiedArray[-1] << std::endl;
 		}
 		catch (const std::exception &e)
 		{
@@ -141,7 +151,7 @@ int main(void)
 			Array<int> zeroLengthArray(0);
 			std::cout << zeroLengthArray[0] << std::endl;
 		}
-		catch(const std::exception& e)
+		catch (const std::exception &e)
 		{
 			std::cerr << e.what() << std::endl;
 		}
